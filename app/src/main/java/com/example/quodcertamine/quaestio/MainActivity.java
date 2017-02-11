@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -69,12 +70,13 @@ public class MainActivity extends AppCompatActivity {
         String startURL = "\"url\": \"";
         String endURL = "/\"";
         String partURL = builder.substring(builder.indexOf(startURL) + startURL.length());
-        String urlGo = partQuestion.substring(0, partQuestion.indexOf(endURL));
+        String urlGo = partURL.substring(0, partURL.indexOf(endURL));
         System.out.println(urlGo);
         Toast.makeText(getApplicationContext(), urlGo,
                 Toast.LENGTH_LONG).show();
         mTextView = (TextView) findViewById(R.id.url);
         mTextView.setText(urlGo);
+        mTextView.setMovementMethod(LinkMovementMethod.getInstance());
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

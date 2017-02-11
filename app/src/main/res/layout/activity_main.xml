@@ -23,11 +23,12 @@
 
     <TextView
         android:text="TextView"
+        android:autoLink="web"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/url"
         android:textColor="@color/colorlight"
-        android:textSize="24dp"/>
+        android:textSize="14dp"/>
 </RelativeLayout>
