@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/colordark"
-    tools:context="com.example.quodcertamine.quaestio.MainActivity">
+    tools:context="com.quodcertamine.quodcertamine.quaestio.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"

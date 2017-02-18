@@ -1,8 +1,8 @@
-package com.example.quodcertamine.quaestio;
+package com.quodcertamine.quodcertamine.quaestio;
 
-import android.app.ActionBar;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.StrictMode;
@@ -13,9 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,14 +35,16 @@ public class MainActivity extends AppCompatActivity {
         //set content view AFTER ABOVE sequence (to avoid crash)
         this.setContentView(R.layout.activity_main);
         notifications();
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        try {
-            main();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        NetworkUtilTask netTask = new NetworkUtilTask(this);
+        netTask.execute();
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
+//        try {
+//            main();
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void main(String... args) throws Exception {
@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
         String partURL = builder.substring(builder.indexOf(startURL) + startURL.length());
         String urlGo = partURL.substring(0, partURL.indexOf(endURL));
         System.out.println(urlGo);
-        Toast.makeText(getApplicationContext(), urlGo,
-                Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(), urlGo,
+//                Toast.LENGTH_LONG).show();
         mTextView = (TextView) findViewById(R.id.url);
         mTextView.setText(urlGo);
         mTextView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -108,5 +108,37 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
         Toast.makeText(this, "Notifications are On", Toast.LENGTH_SHORT).show();
+    }
+
+    private class NetworkUtilTask extends AsyncTask<Void, Void, Boolean>{
+        Context context;
+
+        public NetworkUtilTask(Context context){
+            this.context = context;
+            try {
+                main();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        protected Boolean doInBackground(Void... params) {
+//            try {
+//                main();
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+            return true;
+        }
+        protected void onPostExecute(Boolean hasActiveConnection) {
+//            try {
+//                main();
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+        }
     }
 }

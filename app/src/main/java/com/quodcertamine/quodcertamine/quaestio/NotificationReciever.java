@@ -1,4 +1,4 @@
-package com.example.quodcertamine.quaestio;
+package com.quodcertamine.quodcertamine.quaestio;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;

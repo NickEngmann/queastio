@@ -1,4 +1,4 @@
-package com.example.quodcertamine.quaestio;
+package com.quodcertamine.quodcertamine.quaestio;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
